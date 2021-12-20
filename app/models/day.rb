@@ -1,6 +1,7 @@
 class Day < ApplicationRecord
 
-  belongs_to :dairy
-  has_one :list
+  belongs_to :diary
+
+  validates :date, presence: true, uniqueness: { scope: :diary }
 
 end

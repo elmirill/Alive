@@ -1,0 +1,10 @@
+%h1 Index
+
+- if @days.present?
+  - @days.each do |day|
+    - if Day.where(diary_id: @diary.id, date: day).first.present?
+      %h3= link_to day.strftime("%d.%m.%Y"), "/#{day}"
+    - else
+      %h3= link_to day.strftime("%d.%m.%Y"), days_path(day: { date: day }), method: :post
+- else
+  %h2 Nothing here yet.
