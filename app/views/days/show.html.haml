@@ -1,6 +1,10 @@
 %h1 Day
 
 - if @day.present?
-  %h2= @day.date
+  %h2= formatted_date(@day.date)
+  - if @day_entries.present?
+    - @day_entries.each do |entry|
+      %ul
+        %li= entry.diary_entry.title
 - else
   %h2 Nothing here yet.

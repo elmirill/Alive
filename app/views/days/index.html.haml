@@ -1,10 +1,10 @@
 %h1 Index
 
-- if @days.present?
-  - @days.each do |day|
-    - if Day.where(diary_id: @diary.id, date: day).first.present?
-      %h3= link_to day.strftime("%d.%m.%Y"), "/#{day}"
+- if @dates.present?
+  - @dates.each do |date|
+    - if day_by_date(date).present?
+      %h3= link_to formatted_date(date), "/#{date}"
     - else
-      %h3= link_to day.strftime("%d.%m.%Y"), days_path(day: { date: day }), method: :post
+      %h3= link_to formatted_date(date), days_path(day: { date: date }), method: :post
 - else
   %h2 Nothing here yet.

@@ -5,15 +5,16 @@ class DaysController < ApplicationController
 
   def index
     today = @today_date
-    @days = []
+    @dates = []
     while today >= @diary_created do
-      @days << today
+      @dates << today
       today -= 1.day
     end
   end
 
   def show
     redirect_to days_path if @day.nil?
+    @day_entries = @day.day_entries
   end
 
   def create
@@ -36,6 +37,7 @@ class DaysController < ApplicationController
   def set_day
     date = params[:date].present? ? params[:date] : @today_date
     @day = Day.where(diary_id: @diary.id, date: date).first
+    @day = @diary.days.create(date: date) if @day.blank?
   end
 
   def day_params

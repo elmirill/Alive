@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_17_094941) do
+ActiveRecord::Schema.define(version: 2021_12_20_120226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "day_entries", force: :cascade do |t|
+    t.text "text"
+    t.string "line"
+    t.string "desired_line"
+    t.boolean "check"
+    t.bigint "day_id"
+    t.bigint "diary_entry_id"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_day_entries_on_day_id"
+    t.index ["diary_entry_id"], name: "index_day_entries_on_diary_entry_id"
+  end
 
   create_table "days", force: :cascade do |t|
     t.datetime "date"
@@ -28,13 +42,14 @@ ActiveRecord::Schema.define(version: 2021_12_17_094941) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "diary_items", force: :cascade do |t|
+  create_table "diary_entries", force: :cascade do |t|
     t.string "title"
     t.integer "sort_order"
+    t.string "entry_type"
     t.bigint "diary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["diary_id"], name: "index_diary_items_on_diary_id"
+    t.index ["diary_id"], name: "index_diary_entries_on_diary_id"
   end
 
 end
