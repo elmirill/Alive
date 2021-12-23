@@ -1,10 +1,11 @@
 class DayEntry < ApplicationRecord
 
-  # text line desired_line check type
+  # text, line, check, type
 
   belongs_to :day
   belongs_to :diary_entry
 
-  # validates at least one attr
+  scope :ordered, -> { includes(:diary_entry).order("diary_entries.sort_order ASC") }
+  scope :reverse_ordered, -> { includes(:diary_entry).order("diary_entries.sort_order ASC").reverse }
 
 end

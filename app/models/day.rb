@@ -2,12 +2,12 @@ class Day < ApplicationRecord
 
   # date
 
-  after_create :update_day_entries
-
   belongs_to :diary
   has_many :day_entries, dependent: :destroy
 
   validates :date, presence: true, uniqueness: { scope: :diary }
+
+  after_create :update_day_entries
 
   private
 

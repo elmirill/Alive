@@ -1,0 +1,11 @@
+%h1 Edit Diary
+
+- if @diary_entries.present?
+  - @diary_entries.each do |entry|
+    %ul
+      %li
+        = "#{entry.title} — #{entry.entry_type[5..-1]} |"
+        = link_to "Edit", edit_diary_entry_path(entry)
+        = link_to "Delete", diary_entry_path(entry), method: :delete, data: { confirm: "Are you sure?" }
+
+= link_to "New Entry", new_diary_entry_path

@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_12_20_120226) do
   create_table "day_entries", force: :cascade do |t|
     t.text "text"
     t.string "line"
-    t.string "desired_line"
     t.boolean "check"
     t.bigint "day_id"
     t.bigint "diary_entry_id"
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_120226) do
     t.string "title"
     t.integer "sort_order"
     t.string "entry_type"
+    t.string "desired_line"
     t.bigint "diary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

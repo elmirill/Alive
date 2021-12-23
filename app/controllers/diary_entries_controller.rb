@@ -1,0 +1,47 @@
+class DiaryEntriesController < ApplicationController
+
+  before_action :set_diary_entry, only: [:edit, :update, :destroy]
+
+  def index
+  end
+
+  def new
+    @diary_entry = DiaryEntry.new
+  end
+
+  def create
+    @diary_entry = @diary.diary_entries.new(diary_entry_params)
+    if @diary_entry.save
+      redirect_to edit_diary_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @diary_entry.update(diary_entry_params)
+      redirect_to edit_diary_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @diary_entry.destroy
+    redirect_to edit_diary_path
+  end
+
+  private
+
+  def set_diary_entry
+    @diary_entry = DiaryEntry.find(params[:id])
+  end
+
+  def diary_entry_params
+    params.require(:diary_entry).permit(:title, :entry_type, :desired_line, :sort_order)
+  end
+
+end

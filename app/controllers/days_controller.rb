@@ -1,6 +1,6 @@
 class DaysController < ApplicationController
 
-  before_action :set_diary, :set_today_date
+  before_action :set_today_date
   before_action :set_day, only: :show
 
   def index
@@ -14,7 +14,7 @@ class DaysController < ApplicationController
 
   def show
     redirect_to days_path if @day.nil?
-    @day_entries = @day.day_entries
+    @day_entries = @day.day_entries.ordered
   end
 
   def create
@@ -23,12 +23,6 @@ class DaysController < ApplicationController
   end
 
   private
-
-  def set_diary
-    # TODO: bind to user
-    @diary = Diary.first || Diary.create!
-    @diary_created = @diary.created_at.to_date
-  end
 
   def set_today_date
     @today_date = DateTime.current.to_date

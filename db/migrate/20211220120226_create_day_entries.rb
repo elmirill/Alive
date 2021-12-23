@@ -3,7 +3,6 @@ class CreateDayEntries < ActiveRecord::Migration[6.1]
     create_table :day_entries do |t|
       t.text :text
       t.string :line
-      t.string :desired_line
       t.boolean :check
       t.belongs_to :day
       t.belongs_to :diary_entry
