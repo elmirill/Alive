@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   resources :days, only: [:index, :create]
   resources :diary_entries, except: :show
-  resources :day_entries, only: [:edit, :update]
+  resources :day_entries, only: [:update]
   
   get 'edit-diary', to: 'diary_entries#index', as: :edit_diary
 
   get 'about', to: 'pages#about', as: :about
 
-  get ':date', to: 'days#show', as: :day
+  get ':date', to: 'days#show', as: :day, date: /(\d|-){8,10}/
 end

@@ -1,3 +1,7 @@
+- if @diary_entry.errors.any?
+  - @diary_entry.errors.full_messages.each do |message|
+    = message
+
 = form_with model: @diary_entry do |form|
   = form.text_field :title
   = form.select :entry_type, [["Text", "EntryText"], ["Line", "EntryLine"], ["Checkbox", "EntryCheck"]]

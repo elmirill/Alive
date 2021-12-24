@@ -5,8 +5,9 @@ class DiaryEntry < ApplicationRecord
   belongs_to :diary
   has_many :day_entries, dependent: :destroy
 
-  validates :title, presence: true, uniqueness: { scope: :diary }
+  validates :title, presence: true, uniqueness: { scope: :diary }, length: { maximum: 255 }
   validates :entry_type, presence: true
+  validates :desired_line, length: { maximum: 255 }
 
   scope :ordered, -> { order("sort_order ASC") }
   scope :reverse_ordered, -> { order("sort_order ASC").reverse }

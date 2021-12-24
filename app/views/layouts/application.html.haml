@@ -10,4 +10,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render "layouts/shared/nav"
+    - flash.each do |name, message|
+      = message
     = yield

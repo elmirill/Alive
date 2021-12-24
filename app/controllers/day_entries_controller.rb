@@ -2,14 +2,13 @@ class DayEntriesController < ApplicationController
 
   before_action :set_day_entry
 
-  def edit
-  end
-
   def update
     if @day_entry.update(day_entry_params)
-      redirect_to day_path(date: @day_entry.day.date)
+      redirect_to day_path(date: @day_entry.day.date.to_date)
     else
-      render :edit, status: :unprocessable_entity
+      #TODO Process exception
+      flash[:alert] = "Error: entry wasn't updated."
+      redirect_to day_path(date: @day_entry.day.date.to_date)
     end
   end
 
