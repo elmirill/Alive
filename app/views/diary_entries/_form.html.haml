@@ -4,9 +4,7 @@
 
 = form_with model: @diary_entry do |form|
   = form.text_field :title
-  = form.select :entry_type, [["Text", "EntryText"], ["Line", "EntryLine"], ["Checkbox", "EntryCheck"]]
+  = form.select :entry_type, [["Text", "EntryText"], ["Check", "EntryCheck"], ["Line", "EntryLine"]]
   = form.number_field :sort_order
-  = form.text_field :desired_line
-  -# = form.text_field :desired_line if @diary_entry.entry_type == "EntryLine"
 
   = form.submit

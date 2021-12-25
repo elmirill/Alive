@@ -1,5 +1,5 @@
 class DayEntryLine < DayEntry
 
-  # line, desired_line
+  # line
 
 end

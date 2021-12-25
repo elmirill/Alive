@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2021_12_25_103949) do
     t.string "title"
     t.integer "sort_order"
     t.string "entry_type"
-    t.string "desired_line"
     t.bigint "diary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
