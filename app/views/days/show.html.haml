@@ -8,7 +8,7 @@
         %li= entry.diary_entry.title
         = form_with model: entry.becomes(DayEntry) do |form|
           - if entry.type == "DayEntryText"
-            = form.text_area :text
+            = form.rich_text_area :rich_text
           - elsif entry.type == "DayEntryLine"
             = form.text_field :line
           - else entry.type == "DayEntryCheck"

@@ -19,7 +19,7 @@ class DayEntriesController < ApplicationController
   end
 
   def day_entry_params
-    params.require(:day_entry).permit(:text, :line, :check)
+    params.require(:day_entry).permit(:text, :line, :check, :rich_text)
   end
 
 end
