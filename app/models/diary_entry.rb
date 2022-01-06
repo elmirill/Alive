@@ -2,6 +2,8 @@ class DiaryEntry < ApplicationRecord
 
   # title, sort_order, entry_type
 
+  ENTRY_TYPES = ["EntryText", "EntryCheck", "EntryLine"]
+
   belongs_to :diary
   has_many :day_entries, dependent: :destroy
 

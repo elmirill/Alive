@@ -1,0 +1,71 @@
+#main-nav {
+  height: 300px;
+  margin: 0 20px;
+  position: fixed;
+  z-index: 10;
+  top: calc(50% - 150px);
+  right: 0;
+
+  .btn-floating {
+    margin: 15px 0;
+    display: block;
+  }
+}
+
+#mobile-nav {
+  position: fixed;
+  z-index: 10;
+  bottom: 15px;
+  right: 15px;
+  li {
+    margin: 7.5px 13px 0 0;
+  }
+}
+
+.navbar-fixed {
+  nav {
+    text-align: center;
+    @extend .grey, .lighten-5;
+  }
+  .nav-title {
+    margin: 0;
+    padding: 0;
+    color: $primary-text-color;
+  }
+}
+
+nav#diary-navbar {
+  .left-arrow, .right-arrow {
+    position: relative;
+    a {
+      position: absolute;
+      top: 0;
+      color: $link-color;
+    }
+    i {
+      font-size: 3rem;
+    }
+  }
+  .left-arrow {
+    a {
+      right: 0;
+    }
+  }
+  .right-arrow {
+    a {
+      left: 0;
+    }
+  }
+}
+
+nav#diary-index-navbar {
+
+}
+
+nav#edit-diary-navbar {
+
+}
+
+nav#about-navbar {
+
+}

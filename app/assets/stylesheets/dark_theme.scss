@@ -1,0 +1,20 @@
+.dark-theme {
+  background-color: #1d1d1d;
+
+  .navbar-fixed {
+    nav {
+      @extend .grey, .darken-4;
+    }
+    .nav-title {
+      color: $primary-text-color-dark;
+    }
+  }
+
+  #edit-diary {  
+    input {
+      color: $primary-text-color-dark;
+    }
+  }
+}
+
+

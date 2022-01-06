@@ -1,3 +1,8 @@
-%h1 Edit Entry
+= render "layouts/shared/navbar", block_id: "edit-diary-navbar" do
+  %span.nav-title Edit Entry
 
-= render "form"
+#edit-diary.main-content
+  .container
+    .row
+      .col.s12.m11.l12
+        = render "form"

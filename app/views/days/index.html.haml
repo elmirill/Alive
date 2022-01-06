@@ -1,10 +1,16 @@
-%h1 Days Index
-
 - if @dates.present?
-  - @dates.each do |date|
-    - if day_by_date(date).present?
-      %h3= link_to formatted_date(date), "/#{date}"
-    - else
-      %h3= link_to formatted_date(date), days_path(day: { date: date }), method: :post
+  = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
+    %span.nav-title Days List
+
+  #diary-index.main-content
+    .container
+      .dates.center-align
+        - @dates.each do |date|
+          - if day_by_date(date).present?
+            %h2= link_to humanized_date(date), "/#{date}"
+          - else
+            %h2= link_to humanized_date(date), days_path(day: { date: date }), method: :post
+
 - else
-  %h2 Nothing here yet.
+  = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
+    %span.nav-title Nothing here yet

@@ -9,7 +9,10 @@ gem 'puma', '~> 5.0'
 gem 'figaro'
 gem 'haml-rails'
 gem 'sass-rails', '>= 6'
-gem 'font_awesome5_rails'
+# gem 'turbolinks'
+# gem 'font_awesome5_rails'
+gem 'materialize-sass'
+gem 'material_icons' 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -1,11 +1,19 @@
-%h1 Edit Diary
+= render "layouts/shared/navbar", block_id: "edit-diary-navbar" do
+  %span.nav-title Edit Diary
 
-- if @diary_entries.present?
-  - @diary_entries.each do |entry|
-    %ul
-      %li
-        = "#{entry.title} — #{entry.entry_type[5..-1]} |"
-        = link_to "Edit", edit_diary_entry_path(entry)
-        = link_to "Delete", diary_entry_path(entry), method: :delete, data: { confirm: "Are you sure?" }
+#edit-diary.main-content
+  .container
+    .row
+      .col.s12.m11.l12
+        - if @diary_entries.present?
+          .diary-entries
+            - @diary_entries.each do |entry|
+              .input-field.diary-entry
+                = material_icon.short_text.css_class("prefix")
+                %span.title= entry.title
+                = link_to edit_diary_entry_path(entry), class: "tooltipped right", data: { tooltip: "Edit entry", position: "bottom" } do
+                  = material_icon.edit.css_class("edit")
+              .divider
 
-= link_to "New Entry", new_diary_entry_path
+        .entry-form
+          = render "form"

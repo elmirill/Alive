@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   root 'days#show'
 
   resources :days, only: [:index, :create]
-  resources :diary_entries, except: :show
+  resources :diary_entries, except: [:show, :new]
   resources :day_entries, only: [:update]
   
-  get 'edit-diary', to: 'diary_entries#index', as: :edit_diary
+  get 'edit', to: 'diary_entries#index', as: :edit
 
   get 'about', to: 'pages#about', as: :about
 

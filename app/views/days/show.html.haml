@@ -1,19 +1,33 @@
-%h1 Day
-
 - if @day.present?
-  %h2= formatted_date(@day.date)
-  - if @day_entries.present?
-    - @day_entries.each do |entry|
-      %ul
-        %li= entry.diary_entry.title
-        = form_with model: entry.becomes(DayEntry) do |form|
-          - if entry.type == "DayEntryText"
-            = form.rich_text_area :rich_text
-          - elsif entry.type == "DayEntryLine"
-            = form.text_field :line
-          - else entry.type == "DayEntryCheck"
-            = form.check_box :check
-          = form.submit
+
+  = render "layouts/shared/navbar", block_id: "diary-navbar" do
+    .col.s1.offset-m1.offset-l2.right-align.left-arrow
+      - if prev_day?
+        = link_to prev_day do
+          = material_icon.arrow_back
+    .col.s10.m8.l6.center-align
+      %span.nav-title= humanized_date(@day.date)
+    .col.s1.left-align.right-arrow
+      - if next_day?
+        = link_to next_day do
+          = material_icon.arrow_forward
+
+  #diary.main-content
+    .container
+      .row
+        .col.s12.m11.l12
+          - if @day_entries.present?
+            - @day_entries.each do |entry|
+              %label= entry.diary_entry.title
+              = form_with model: entry.becomes(DayEntry) do |form|
+                - if entry.type == "DayEntryText"
+                  = form.rich_text_area :rich_text
+                - elsif entry.type == "DayEntryLine"
+                  = form.text_field :line
+                - else entry.type == "DayEntryCheck"
+                  = form.check_box :check
+                = form.submit
 
 - else
-  %h2 Nothing here yet.
+  = render "layouts/shared/navbar", block_id: "diary-navbar" do
+    %span.nav-title Nothing here yet

@@ -1,0 +1,9 @@
+#mobile-nav.hide-on-med-and-up.fixed-action-btn
+  %a.btn-floating.btn-large.amber.darken-2
+    = material_icon.menu.md_24
+
+  %ul
+    - nav_buttons.each do |nav|
+      %li
+        = link_to nav[:url], class: "btn-floating waves-effect waves-light #{nav[:color]} tooltipped", data: { tooltip: "#{nav[:tooltip]}", position: "top" } do
+          = material_icon.send("#{nav[:icon]}")
