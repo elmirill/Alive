@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_25_103949) do
+ActiveRecord::Schema.define(version: 2022_01_14_104708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_12_25_103949) do
     t.boolean "check"
     t.bigint "day_id"
     t.bigint "diary_entry_id"
-    t.string "type"
+    t.string "entry_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["day_id"], name: "index_day_entries_on_day_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_12_25_103949) do
     t.bigint "diary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "hidden"
     t.index ["diary_id"], name: "index_diary_entries_on_diary_id"
   end
 

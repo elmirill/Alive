@@ -14,7 +14,7 @@ class Day < ApplicationRecord
   def update_day_entries
     @diary_entries = self.diary.diary_entries
     @diary_entries.each do |entry|
-      self.day_entries.create!(type: "Day#{entry.entry_type}", diary_entry: entry)
+      self.day_entries.create!(entry_type: "Day#{entry.entry_type}", diary_entry: entry)
     end
   end
 

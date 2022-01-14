@@ -21,14 +21,14 @@ class DiaryEntry < ApplicationRecord
   def create_day_entries
     @days = self.diary.days
     @days.each do |day|
-      self.day_entries.create(day: day, type: "Day#{entry_type}")
+      self.day_entries.create(day: day, entry_type: "Day#{entry_type}")
     end
   end
 
   def update_day_entries
     @diary_entries = DayEntry.where(diary_entry: self)
     @diary_entries.each do |diary_entry|
-      diary_entry.update(type: "Day#{entry_type}")
+      diary_entry.update(entry_type: "Day#{entry_type}")
     end
   end
 

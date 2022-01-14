@@ -1,25 +1,32 @@
-const toggleInputIcon = (e) => {
-  let icon = e.target
-  let button = icon.closest("label").querySelector("input")
+import Rails from "@rails/ujs"
 
+// Toggle radio button icons
+// TODO: redo in CSS only
+const toggleInputIcon = (e) => {
+  let icon = e.target.closest("span")
+  let button = icon.closest("label").querySelector("input")
   radioIcons.forEach(radio => {
-    radio.querySelector("i").classList.remove("toggled")
+    radio.classList.remove("toggled")
   })
   icon.classList.add("toggled")
   button.checked = true
 }
 
-const checkInputIcons = () => {
-  radioButtons.forEach(button => {
-    if (button.checked) {
-      icon = button.closest("label").querySelector("i")
-      icon.classList.add("toggled")
-    }
-  })
+const radioIcons = document.querySelectorAll(".radio-icons span")
+radioIcons.forEach(radio => radio.addEventListener("mouseup", toggleInputIcon))
+
+
+// Send check boxes (and text areas) on change
+const sendForm = (e) => {
+  let form = e.target.closest("form")
+  // form.submit()
+  Rails.fire(form, 'submit')
 }
 
-const radioIcons = document.querySelectorAll(".radio-icons span")
-const radioButtons = document.querySelectorAll(".radio-icons input")
+const checkFields = document.querySelectorAll(".day-entry [type='checkbox']")
+checkFields.forEach(field => field.addEventListener("change", sendForm))
 
-window.addEventListener('load', checkInputIcons)
-radioIcons.forEach(radio => radio.addEventListener("mouseup", toggleInputIcon))
+// TODO: optimize with local storage and input change
+const textFields = document.querySelectorAll(".day-entry .trix-content")
+textFields.forEach(field => field.addEventListener("keyup", sendForm))
+

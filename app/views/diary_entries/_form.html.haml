@@ -4,21 +4,26 @@
       %li.error-message
         = message
 
-= form_with model: @diary_entry do |form|
+= form_with model: @diary_entry, local: false do |form|
   .row.input-field
     .col.title-field
       = form.text_field :title, placeholder: "Title"
     .col.actions
+
       .type-radio.radio-icons.left
         %label.tooltipped{ data: { tooltip: "Rich text area", position: "bottom" } }
           = form.radio_button :entry_type, "EntryText"
-          %span= material_icon.insert_chart.md_48.r90
+          %span{ class: toggled_class(@diary_entry, "EntryText") }
+            = material_icon.insert_chart.r90
         %label.tooltipped{ data: { tooltip: "Check box", position: "bottom" } }
           = form.radio_button :entry_type, "EntryCheck"
-          %span= material_icon.check_box.md_48
+          %span{ class: toggled_class(@diary_entry, "EntryCheck") }
+            = material_icon.check_box
         %label.tooltipped{ data: { tooltip: "Short text box", position: "bottom" } }
           = form.radio_button :entry_type, "EntryLine"
-          %span= material_icon.font_download.md_48.css_class("normalize")
+          %span{ class: toggled_class(@diary_entry, "EntryLine") }
+            = material_icon.font_download.css_class("normalize")
+
       .submit.right
         - if @diary_entry.new_record?
           %button.btn.waves-effect.waves-light.tooltipped{ type: "submit", data: { tooltip: "Add entry", position: "bottom" } }
@@ -29,12 +34,14 @@
 
   - unless @diary_entry.new_record?
     .row.advanced-actions
+
       .col.hidden.left
         .switch.tooltipped{ data: { tooltip: "Hide from your diary", position: "bottom" } }
           %label
             Hidden
-            = form.check_box :order
+            = form.check_box :hidden
             %span.lever
+
       .col.delete.left
         = link_to diary_entry_path(@diary_entry), method: :delete, data: { confirm: "Are you sure? This action cannot be undone. You can hide this entry instead.", tooltip: "Delete permanently", position: "bottom" }, class: "tooltipped" do
           %label Delete

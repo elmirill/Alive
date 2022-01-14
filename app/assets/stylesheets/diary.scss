@@ -1,5 +1,26 @@
 #diary {
 
+  .day-entry {
+    position: relative;
+
+    label, span.label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $primary-text-color;
+      margin: 0 0 10px;
+      display: inline-block;
+    }
+  }
+
+  .day-entry + .day-entry {
+    margin-top: 30px;
+  }
+
+  .save-button {
+    position: absolute;
+    right: -55px;
+    bottom: 0;
+  }
 }
 
 #diary-index {

@@ -20,14 +20,15 @@
 
 // Colors
 $primary-text-color: color("grey", "darken-4") !default;
-//// Dark Theme
-$primary-text-color-dark: color("grey", "lighten-3") !default;
 $link-color: color("light-blue", "darken-1") !default;
 $action-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("deep-orange", "lighten-1") !default;
 $icon-grey-color: color("grey", "base") !default;
 $error-color: color("red", "base") !default;
 // $success-color: color("green", "base") !default;
+//// Dark Theme
+$primary-text-color-dark: color("grey", "lighten-1") !default;
+$divider-color-dark: color("grey", "darken-3") !default;
 
 
 // Typography
@@ -44,5 +45,6 @@ $h4-fontsize: 1.4rem !default;
 $input-border-color: color("grey", "base") !default;
 $input-focus-color: color("deep-orange", "lighten-1") !default;
 $input-text-color: $primary-text-color !default;
-$placeholder-text-color: lighten($input-border-color, 10%) !default;
+$placeholder-text-color: lighten($input-border-color, 1%) !default;
 $label-font-size: 1rem !default;
+//// Dark Theme

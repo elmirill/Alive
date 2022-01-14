@@ -41,7 +41,7 @@ class DiaryEntriesController < ApplicationController
   end
 
   def diary_entry_params
-    params.require(:diary_entry).permit(:title, :entry_type, :sort_order)
+    params.require(:diary_entry).permit(:title, :entry_type, :sort_order, :hidden)
   end
 
 end

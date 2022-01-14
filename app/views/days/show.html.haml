@@ -15,18 +15,26 @@
   #diary.main-content
     .container
       .row
-        .col.s12.m11.l12
+        .col.s12.m11.l12.xl10.offset-xl1
           - if @day_entries.present?
+
             - @day_entries.each do |entry|
-              %label= entry.diary_entry.title
-              = form_with model: entry.becomes(DayEntry) do |form|
-                - if entry.type == "DayEntryText"
-                  = form.rich_text_area :rich_text
-                - elsif entry.type == "DayEntryLine"
-                  = form.text_field :line
-                - else entry.type == "DayEntryCheck"
-                  = form.check_box :check
-                = form.submit
+              - unless entry.diary_entry.hidden?
+                .day-entry
+                  = form_with model: entry, local: false do |form|
+
+                    - if entry.entry_type == "DayEntryText"
+                      %label= entry.diary_entry.title
+                      = form.rich_text_area :rich_text
+
+                    - elsif entry.entry_type == "DayEntryLine"
+                      = form.text_field :line
+
+                    - elsif entry.entry_type == "DayEntryCheck"
+                      .check-box
+                        %label
+                          = form.check_box :check, class: "filled-in"
+                          %span.label= entry.diary_entry.title
 
 - else
   = render "layouts/shared/navbar", block_id: "diary-navbar" do

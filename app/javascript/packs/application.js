@@ -4,19 +4,14 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'materialize-css/dist/js/materialize'
 
 Rails.start()
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
-
-require("packs/action_text")
-require("packs/materialize_init")
-require("packs/forms")
-// require("packs/dark_theme")

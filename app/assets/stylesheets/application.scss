@@ -13,15 +13,14 @@
  */
 
  @import "trix/dist/trix";
- @import "action_text";
 
 @import "materialize/components/color-variables";
 @import "variables";
-
 @import "materialize";
 @import "material_icons";
 
 @import "global";
+@import "forms";
 @import "nav";
 @import "diary";
 @import "edit_diary";

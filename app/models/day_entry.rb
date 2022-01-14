@@ -1,6 +1,6 @@
 class DayEntry < ApplicationRecord
 
-  # text, richtext (through action_text), line, check, type
+  # text, richtext (through action_text), line, check, entry_type
 
   belongs_to :day
   belongs_to :diary_entry

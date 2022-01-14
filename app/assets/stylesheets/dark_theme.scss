@@ -1,6 +1,10 @@
 .dark-theme {
   background-color: #1d1d1d;
 
+  .divider {
+    background-color: $divider-color-dark;
+  }
+
   .navbar-fixed {
     nav {
       @extend .grey, .darken-4;
@@ -11,9 +15,10 @@
   }
 
   #edit-diary {  
-    input {
+    input, .title {
       color: $primary-text-color-dark;
     }
+    
   }
 }
 

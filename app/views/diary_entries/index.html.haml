@@ -4,15 +4,32 @@
 #edit-diary.main-content
   .container
     .row
-      .col.s12.m11.l12
+      .col.s12.m11.l12.xl10.offset-xl1
         - if @diary_entries.present?
           .diary-entries
             - @diary_entries.each do |entry|
-              .input-field.diary-entry
-                = material_icon.short_text.css_class("prefix")
-                %span.title= entry.title
-                = link_to edit_diary_entry_path(entry), class: "tooltipped right", data: { tooltip: "Edit entry", position: "bottom" } do
-                  = material_icon.edit.css_class("edit")
+
+              .input-field.diary-entry{ class: ("hidden tooltipped" if entry.hidden?), data: ({ tooltip: "This entry is hidden from your diary", position: "bottom" } if entry.hidden?) }
+                .left.valign-wrapper
+                  = material_icon.short_text.css_class("prefix")
+                  %span.title= entry.title
+
+                .right.valign-wrapper
+                  - if entry.entry_type == "EntryText"
+                    .tip-icon
+                      = material_icon.insert_chart.r90
+                  - elsif entry.entry_type == "EntryCheck"
+                    .tip-icon
+                      = material_icon.check_box
+                  - elsif entry.entry_type == "EntryLine"
+                    .tip-icon
+                      = material_icon.font_download.css_class("normalize")
+
+                  = link_to edit_diary_entry_path(entry), class: "edit" do
+                    = material_icon.edit
+
+                .clearfix
+
               .divider
 
         .entry-form
