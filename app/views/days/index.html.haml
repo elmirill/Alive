@@ -1,8 +1,9 @@
 - if @days.present?
-  = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
-    %span.nav-title Your Story
+  %header
+    = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
+      %span.nav-title Your Story
 
-  #diary-index.main-content
+  %main#diary-index
     .container
       .row
         .col.s12.m11.l12
@@ -23,5 +24,6 @@
                         %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) 
 
 - else
-  = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
-    %span.nav-title Nothing here yet
+  %header
+    = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
+      %span.nav-title Nothing here yet

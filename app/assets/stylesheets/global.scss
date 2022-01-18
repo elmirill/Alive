@@ -2,6 +2,14 @@ body {
   line-height: 1.5;
   display: block;
   position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  padding: 50px 0 80px;
+  flex: 1 0 auto;
 }
 
 img {
@@ -26,10 +34,6 @@ h3 {
 
 h4 {
   font-weight: 400;
-}
-
-.main-content {
-  padding: 50px 0 80px;
 }
 
 .row {

@@ -1,0 +1,17 @@
+.page-footer {
+  @extend .transparent;
+
+  .row {
+    margin-bottom: 19px;
+  }
+
+  .footer-copyright {
+    @extend .transparent;
+    @extend .grey-text;
+    justify-content: center;
+  }
+
+  a {
+    @extend .deep-purple-text;
+  }
+}

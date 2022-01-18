@@ -13,7 +13,7 @@ class Day < ApplicationRecord
 
   scope :reverse_ordered, -> { order("date ASC") }
 
-  after_create :update_day_entries
+  after_create :create_day_entries
 
   def excerpt
     excerpt_entry = get_excerpt_entry
@@ -31,7 +31,7 @@ class Day < ApplicationRecord
 
   private
 
-  def update_day_entries
+  def create_day_entries
     diary_entries = self.diary_entries
     diary_entries.each do |entry|
       self.day_entries.create!(diary_entry: entry)

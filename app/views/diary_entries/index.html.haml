@@ -1,7 +1,8 @@
-= render "layouts/shared/navbar", block_id: "edit-diary-navbar" do
-  %span.nav-title Edit Diary
+%header
+  = render "layouts/shared/navbar", block_id: "edit-diary-navbar" do
+    %span.nav-title Edit Diary
 
-#edit-diary.main-content
+%main#edit-diary
   .container
     .row
       .col.s12.m11.l12.xl10.offset-xl1
