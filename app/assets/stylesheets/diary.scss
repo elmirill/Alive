@@ -4,16 +4,52 @@
     position: relative;
 
     label, span.label {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      color: $primary-text-color;
       margin: 0 0 10px;
+      color: $primary-text-color;
       display: inline-block;
     }
+
+    .rich-text {
+      padding: 0 0 10px;
+    }
+
+    .check-box {
+      label, span.label {
+        margin: 0;
+      }
+      label {
+        padding-left: 10px;
+      }
+      .label {
+        padding-left: 45px;
+      }
+    }
+
+    .line-text {
+      input {
+        width: 47px;
+        height: 25px;
+        margin: 0;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+      .label {
+        margin: 0;
+        padding-left: 4px;
+        vertical-align: middle;
+      }
+    }
+
   }
 
   .day-entry + .day-entry {
-    margin-top: 30px;
+    margin-top: 20px;
+  }
+
+  .day-entry-text + .day-entry-text {
+    margin-top: 10px;
   }
 
   .save-button {
@@ -24,5 +60,51 @@
 }
 
 #diary-index {
-  // padding: 40px 0 80px;
-} 
+
+  .days-row {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin: 0 -4px;
+  }
+
+  .day {
+    width: 50%;
+    padding: 0 15px 7px;
+    margin: 5px 4px;
+    @extend .z-depth-1;
+    &.current-day {
+      background-color: $current-day-color;
+    }
+  }
+ 
+  .excerpt {
+    text-align: left;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: $primary-text-color;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+
+    span {
+      color: $secondary-text-color;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .days-row {
+      flex-wrap: wrap;
+    }
+    .day {
+      width: 100%;
+    }
+  }
+
+}

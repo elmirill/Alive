@@ -41,6 +41,9 @@ trix-editor {
     font-size: 1.5rem;
     margin-bottom: 5px;
   }
+  ul li {
+    list-style-type: devanagari;
+  }
 }
 
 [type="checkbox"]:checked + span:not(.lever):before {

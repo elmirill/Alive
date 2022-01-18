@@ -10,7 +10,8 @@ class DiaryEntry < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :diary }, length: { maximum: 255 }
   validates :entry_type, presence: true
 
-  scope :ordered, -> { order("sort_order ASC") }
+  default_scope { order("sort_order ASC") }
+
   scope :reverse_ordered, -> { order("sort_order ASC").reverse }
 
   after_create :create_day_entries, :set_order

@@ -1,5 +1,4 @@
 #edit-diary {
-  // padding: 40px 0 80px;
 
   .row {
     // border: 1px solid red;
@@ -11,6 +10,7 @@
 
   .title-field {
     width: calc(100% - 250px);
+    position: relative;
   }
 
   .actions {
@@ -138,6 +138,27 @@
 
   .entry-form {
     padding: 1rem 0 0 3rem;
+  }
+
+  @media (max-width: 599px) {
+    .entry-form {
+      padding: 1rem 0 0;
+    }
+    .title-field {
+      width: 100%;
+    }
+    .actions, .advanced-actions {
+      float: right;
+      margin-top: 0;
+    }
+
+    &.edit-entry {
+      .actions {
+        position: absolute;
+        top: 8.3rem;
+        right: 0;
+      } 
+    }
   }
 
 }

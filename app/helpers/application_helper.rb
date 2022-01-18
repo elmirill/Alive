@@ -5,7 +5,15 @@ module ApplicationHelper
   end
 
   def humanized_date(date)
+    date.strftime("%d %b %Y")
+  end
+
+  def humanized_date_with_weekday(date)
     date.strftime("%d %b %Y, %a")
+  end
+
+  def weekday(date)
+    date.strftime("%a")
   end
 
   def nav_buttons
@@ -15,6 +23,10 @@ module ApplicationHelper
       { url: edit_path, color: "deep-orange lighten-1", tooltip: "Edit diary", icon: "edit" },
       { url: about_path, color: "light-green", tooltip: "Tips & tricks", icon: "info" },
     ]
+  end
+
+  def classify(entry)
+    entry.underscore.dasherize
   end
 
 end

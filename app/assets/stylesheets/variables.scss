@@ -20,11 +20,14 @@
 
 // Colors
 $primary-text-color: color("grey", "darken-4") !default;
+$secondary-text-color: color("blue-grey", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 $action-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("deep-orange", "lighten-1") !default;
 $icon-grey-color: color("grey", "base") !default;
 $error-color: color("red", "base") !default;
+$primary-border-color: color("grey", "base") !default;
+$current-day-color: lighten(color("blue", "lighten-5"), 2%) !default;
 // $success-color: color("green", "base") !default;
 //// Dark Theme
 $primary-text-color-dark: color("grey", "lighten-1") !default;
@@ -32,10 +35,10 @@ $divider-color-dark: color("grey", "darken-3") !default;
 
 
 // Typography
-// $h1-fontsize: 4.2rem !default;
-$h2-fontsize: 2rem !default;
-$h3-fontsize: 1.7rem !default;
-$h4-fontsize: 1.4rem !default;
+$h1-fontsize: 2rem !default;
+$h2-fontsize: 1.7rem !default;
+$h3-fontsize: 1.4rem !default;
+$h4-fontsize: 1.2rem !default;
 // $h5-fontsize: 1.64rem !default;
 // $h6-fontsize: 1rem !default;
 

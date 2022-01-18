@@ -69,3 +69,19 @@ nav#edit-diary-navbar {
 nav#about-navbar {
 
 }
+
+@media (max-width: 599px) {
+  nav {
+    .nav-title {
+      font-size: 1.8rem;
+    }
+  }
+  nav#diary-navbar {
+    .left-arrow, .right-arrow {
+      i { font-size: 2.5rem; }
+    }
+    .left-arrow {
+      padding-left: 5px;
+    }
+  }
+}

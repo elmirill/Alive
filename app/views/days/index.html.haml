@@ -1,17 +1,25 @@
-- if @dates.present?
+- if @days.present?
   = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
-    %span.nav-title Days List
+    %span.nav-title Your Story
 
   #diary-index.main-content
     .container
       .row
-        .col.s12.m11.l12.xl10.offset-xl1
+        .col.s12.m11.l12
           .dates.center-align
-            - @dates.each do |date|
-              - if day_by_date(date).present?
-                %h2= link_to humanized_date(date), "/#{date}"
-              - else
-                %h2= link_to humanized_date(date), days_path(day: { date: date }), method: :post
+
+            - @days.each_slice(2) do |days|
+              .days-row
+                - days.each do |day|
+                  .day{ class: ("current-day" if current_day?(day)) }
+                    = link_to day_link(day) do
+                      %h2
+                        .left 
+                          = humanized_date(day.date)
+                        .right
+                          = weekday(day.date)
+                        .clearfix
+                      %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) if day.excerpt?
 
 - else
   = render "layouts/shared/navbar", block_id: "diary-index-navbar" do
