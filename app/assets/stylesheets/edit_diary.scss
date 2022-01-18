@@ -24,17 +24,17 @@
       height: auto;
       width: auto;
       line-height: unset;
-      &:hover, &.toggled {
-        i {
-          color: $action-color;
-        }
-      }
     }
     span:before, span:after {
       position: absolute;
       opacity: 0;
       visibility: hidden;
       top: -9999px;
+    }
+    [type='radio']:checked + span, span:hover {
+      i {
+        color: $action-color;
+      }
     }
     i {
       color: $icon-grey-color;

@@ -1,21 +1,5 @@
 import Rails from "@rails/ujs"
 
-// Toggle radio button icons
-// TODO: redo in CSS only
-const toggleInputIcon = (e) => {
-  let icon = e.target.closest("span")
-  let button = icon.closest("label").querySelector("input")
-  radioIcons.forEach(radio => {
-    radio.classList.remove("toggled")
-  })
-  icon.classList.add("toggled")
-  button.checked = true
-}
-
-const radioIcons = document.querySelectorAll(".radio-icons span")
-radioIcons.forEach(radio => radio.addEventListener("mouseup", toggleInputIcon))
-
-
 // Send check boxes (and text areas) on change
 const sendForm = (e) => {
   let form = e.target.closest("form")
