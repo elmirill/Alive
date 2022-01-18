@@ -19,7 +19,8 @@
                         .right
                           = weekday(day.date)
                         .clearfix
-                      %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) if day.excerpt?
+                      - if day.excerpt?
+                        %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) 
 
 - else
   = render "layouts/shared/navbar", block_id: "diary-index-navbar" do

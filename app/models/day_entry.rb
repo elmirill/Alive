@@ -1,6 +1,6 @@
 class DayEntry < ApplicationRecord
 
-  # text, richtext (through action_text), line, check, entry_type
+  # richtext (through action_text), line, check
 
   # TODO: define entry type from the diary entry -- it'll help optimizing DB requests
   belongs_to :day
@@ -10,6 +10,7 @@ class DayEntry < ApplicationRecord
   validates :rich_text, no_attachments: true
 
   delegate :diary, to: :diary_entry
+  delegate :entry_type, to: :diary_entry
 
   has_rich_text :rich_text
 

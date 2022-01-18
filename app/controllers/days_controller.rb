@@ -20,13 +20,12 @@ class DaysController < ApplicationController
   end
 
   def set_days
-    date = @diary_created
+    date = @diary_created - 7.days
     while date <= @today_date do
       day = @diary.days.where(date: date).take
       day = @diary.days.create(date: date) if day.blank?
       date += 1.day
     end
-
     @days = @diary.days
   end
 

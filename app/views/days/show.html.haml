@@ -23,18 +23,18 @@
                 .day-entry{ class: classify(entry.entry_type) }
                   = form_with model: entry, local: false do |form|
 
-                    - if entry.entry_type == "DayEntryText"
+                    - if entry.entry_type == "EntryText"
                       .rich-text
                         %label= entry.diary_entry.title
                         = form.rich_text_area :rich_text
 
-                    - elsif entry.entry_type == "DayEntryCheck"
+                    - elsif entry.entry_type == "EntryCheck"
                       .check-box
                         %label
                           = form.check_box :check, class: "filled-in"
                           %span.label= entry.diary_entry.title
 
-                    - elsif entry.entry_type == "DayEntryLine"
+                    - elsif entry.entry_type == "EntryLine"
                       .line-text
                         = form.text_field :line, class: "input-field inline"
                         %span.label= entry.diary_entry.title

@@ -7,6 +7,8 @@ class Day < ApplicationRecord
 
   validates :date, presence: true, uniqueness: { scope: :diary }
 
+  delegate :diary_entries, to: :diary
+
   default_scope { order("date DESC") }
 
   scope :reverse_ordered, -> { order("date ASC") }
@@ -30,15 +32,15 @@ class Day < ApplicationRecord
   private
 
   def update_day_entries
-    diary_entries = self.diary.diary_entries
+    diary_entries = self.diary_entries
     diary_entries.each do |entry|
-      self.day_entries.create!(entry_type: "Day#{entry.entry_type}", diary_entry: entry)
+      self.day_entries.create!(diary_entry: entry)
     end
   end
 
   def get_excerpt_entry
     day_entries = self.day_entries
-    excerpt_entry = day_entries.select { |entry| entry.diary_entry.entry_type == "EntryText" && entry.rich_text.present? }.first
+    excerpt_entry = day_entries.select { |entry| entry.entry_type == "EntryText" && entry.rich_text.present? }.first
   end
 
 end
