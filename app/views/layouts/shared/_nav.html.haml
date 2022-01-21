@@ -1,4 +1,4 @@
 #main-nav.hide-on-small-only
   - nav_buttons.each do |nav|
-    = link_to nav[:url], class: "btn-floating btn-large waves-effect waves-light #{nav[:color]} tooltipped", data: { tooltip: "#{nav[:tooltip]}", position: "left" } do
+    = link_to nav[:url], class: "btn-floating btn-large waves-effect waves-light #{nav[:class]} tooltipped", data: { tooltip: "#{nav[:tooltip]}", position: "left" } do
       = material_icon.send("#{nav[:icon]}").md_24

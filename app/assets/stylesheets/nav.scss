@@ -1,6 +1,6 @@
 #main-nav {
   height: 300px;
-  margin: 0 20px;
+  margin: 0 24px 0 0;
   position: fixed;
   z-index: 10;
   top: calc(50% - 150px);
@@ -17,9 +17,6 @@
   z-index: 10;
   bottom: 15px;
   right: 15px;
-  li {
-    margin: 7.5px 13px 0 0;
-  }
 }
 
 .navbar-fixed {
@@ -31,6 +28,13 @@
     margin: 0;
     padding: 0;
     color: $primary-text-color;
+  }
+}
+
+nav {
+  .halfway-fab img {
+    padding: 12px;
+    border-radius: 100%;
   }
 }
 

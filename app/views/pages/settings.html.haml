@@ -1,0 +1,10 @@
+%header
+  = render "layouts/shared/navbar", block_id: "settings-navbar" do
+    %span.nav-title Settings
+
+%main#settings
+  .container
+    .row
+      .col.s12.m11.l12
+        #user-settings
+          = render "users/form", url: edit_user_path

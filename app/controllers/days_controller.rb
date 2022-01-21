@@ -1,7 +1,7 @@
 class DaysController < ApplicationController
 
+  before_action :set_days
   before_action :set_day, only: :show
-  before_action :set_days, only: :index
 
   def index
   end
@@ -15,8 +15,7 @@ class DaysController < ApplicationController
 
   def set_day
     date = params[:date].present? ? params[:date] : @today_date
-    @day = Day.where(diary_id: @diary.id, date: date).first
-    @day = @diary.days.create(date: date) if @day.blank?
+    @day = Day.where(diary_id: @diary.id, date: date).take
   end
 
   def set_days

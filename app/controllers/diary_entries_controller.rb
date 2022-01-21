@@ -10,7 +10,7 @@ class DiaryEntriesController < ApplicationController
     @diary_entry = @diary.diary_entries.new(diary_entry_params)
     if @diary_entry.save
       flash[:notice] = "Diary entry created."
-      redirect_to edit_path
+      redirect_to edit_diary_path
     else
       render :index, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class DiaryEntriesController < ApplicationController
   def update
     if @diary_entry.update(diary_entry_params)
       flash[:notice] = "Diary entry updated."
-      redirect_to edit_path
+      redirect_to edit_diary_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class DiaryEntriesController < ApplicationController
   def destroy
     @diary_entry.destroy
     flash[:notice] = "Diary entry deleted."
-    redirect_to edit_path
+    redirect_to edit_diary_path
   end
 
   private

@@ -1,0 +1,19 @@
+#settings {
+
+  .user-form {
+    .signout, .delete-account {
+      font-weight: 500;
+    }
+    .signout {
+      @extend .amber-text-custom;
+    }
+    .delete-account {
+      color: $error-color;
+      padding-left: 0;
+    }
+    .update {
+      float: right;
+    }
+  } 
+
+}

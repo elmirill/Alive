@@ -1,0 +1,24 @@
+.user-form
+  - if @user.errors.any?
+    %ul.errors
+      - @user.errors.full_messages.each do |message|
+        %li= message
+  = form_with model: @user, url: url do |form|
+    .row
+      .col.s12.l6.input-field
+        = form.text_field :first_name, placeholder: "First Name"
+      .col.s12.l6.input-field
+        = form.text_field :last_name, placeholder: "Last Name"
+    .row
+      .col.s12.l6.input-field
+        = form.text_field :email, placeholder: "Email"
+      .col.s12.l6.input-field
+        = form.password_field :password, placeholder: "Password", class: "tooltipped", data: { tooltip: "Password must contain 8+ characters,<br>a digit, a lower and an upper case character", html: "true" }
+    .buttons
+      - if current_user?
+        = link_to delete_account_path, method: :delete, class: "delete-account btn btn-flat btn-large waves-effect waves-light", data: { confirm: "This will permanently delete ALL your data. This action cannot be undone. Are you sure?" } do
+          Delete account
+        = link_to signout_path, method: :delete, class: "signout btn btn-flat btn-large waves-effect waves-light" do
+          Sign out
+      %button.update.btn.btn-large.waves-effect.waves-light{ type: "submit" }
+        #{ @user.new_record? ? "Let's go!" : "Update" }

@@ -12,6 +12,6 @@
   }
 
   a {
-    @extend .deep-purple-text;
+    color: darken($theme-color, 5%);
   }
 }

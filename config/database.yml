@@ -9,7 +9,9 @@ development:
   <<: *default
 
 test:
-  <<: *default  
+  <<: *default
+  # For some reason Rails creates test DB with Dev ENV, so have to explicitly set the name:
+  database: alive_test
 
 production:
   <<: *default

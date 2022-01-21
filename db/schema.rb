@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_104708) do
+ActiveRecord::Schema.define(version: 2022_01_18_132521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,10 @@ ActiveRecord::Schema.define(version: 2022_01_14_104708) do
   end
 
   create_table "day_entries", force: :cascade do |t|
-    t.text "text"
     t.string "line"
     t.boolean "check"
     t.bigint "day_id"
     t.bigint "diary_entry_id"
-    t.string "entry_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["day_id"], name: "index_day_entries_on_day_id"
@@ -75,19 +73,30 @@ ActiveRecord::Schema.define(version: 2022_01_14_104708) do
   end
 
   create_table "diaries", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "diary_entries", force: :cascade do |t|
     t.string "title"
     t.integer "sort_order"
     t.string "entry_type"
+    t.boolean "hidden"
     t.bigint "diary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "hidden"
     t.index ["diary_id"], name: "index_diary_entries_on_diary_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

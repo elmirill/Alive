@@ -1,0 +1,16 @@
+%main#signup.user-form.valign-wrapper
+  .row
+    .col.s12.m8.offset-m2.l8.offset-l2
+      .card{ class: ("error" if @user.errors.any?) }
+        .card-content.center
+
+          %h1 Hello,
+          .greeting
+            %p And welcome to Alive app.
+            %p
+              Alive is a tool I developed for myself to track my everyday efficency.
+              %br
+              It combines a cozy and lightweight diary and a checklist for every routine or habit you'd like to track — everything is customizable and easy to use.
+            %p But enough babble! Let get you inside! :)
+
+          = render "form", url: signup_path

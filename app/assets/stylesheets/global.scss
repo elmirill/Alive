@@ -1,3 +1,28 @@
+.deep-purple-custom {
+  background-color: $deep-purple-custom;
+}
+.deep-purple-text-custom {
+  color: darken($deep-purple-custom, 10%);
+}
+.amber-custom {
+  background-color: $amber-custom;
+}
+.amber-text-custom {
+  color: darken($amber-custom, 2%);
+}
+.terracotta-custom {
+  background-color: $terracotta-custom;
+}
+.terracotta-text-custom {
+  color: $terracotta-custom;
+}
+.salad-green-custom {
+  background-color: $salad-green-custom;
+}
+.salad-green-text-custom {
+  color: $salad-green-custom;
+}
+
 body {
   line-height: 1.5;
   display: block;
@@ -17,11 +42,26 @@ img {
   height: auto;
 }
 
-p {
-  font-size: 1.6rem;
+p, ul, ol {
+  font-size: 1.4rem;
+}
+
+ul, ol {
+  line-height: 1.5;
+}
+
+ul.bulleted {
+  padding-left: 1.5rem;
+  li {
+    list-style-type: disc;
+  }
+  li + li {
+    padding: 3px 0;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
 }
 
 h1 {
@@ -41,10 +81,17 @@ h4 {
   margin-right: -0.75rem;
 }
 
-.errors {
-  .error-message {
-    color: $error-color;
+ul.errors {
+  color: $error-color;
+  text-align: left;
+  padding-left: 1rem;
+  li {
+    list-style: disc;
   }
+}
+
+.btn-flat {
+  background-color: transparent !important;
 }
 
 @media (max-width: 599px) {

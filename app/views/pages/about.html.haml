@@ -1,5 +1,26 @@
-%header
-  = render "layouts/shared/navbar", block_id: "about-navbar" do
-    %span.nav-title Stay fresh. Stay alive.
+- if current_user?
+  %header
+    = render "layouts/shared/navbar", block_id: "about-navbar" do
+      %span.nav-title Stay fresh. Stay alive.
 
 %main#about
+  .container
+    .row
+      .col.s12.m10.offset-m1
+        .card
+          .card-content
+            %p Alive is a tool I developed for myself to track my everyday efficency.
+            %h2 So how to use it?
+
+            %ul.bulleted
+              %li Click on a pencil icon to create or edit desired diary entries;
+              %li A diary entry can be a text area, a check box, or a short text input;
+              %li You can also rearrange them as you wish;
+              %li Then click on a calendar icon — you'll see a today diary page;
+              %li A list icon will bring you to, well, a list of your days. Yep, it's that simple!
+              %li If you don't want to see the entry in your diary but might need it later, feel free to hide it. You can do it on the edit diary page.
+
+            %p Feel free to just click the icons and get yourself comfortable with the app. It's friendly and made with love <3
+
+
+      

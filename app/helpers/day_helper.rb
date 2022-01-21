@@ -23,7 +23,7 @@ module DayHelper
   end
 
   def prev_day?
-    @day.date > @diary_created
+    @day.date > (@diary_created - 7.days)
   end
 
   def current_day?(day) 

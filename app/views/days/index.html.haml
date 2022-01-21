@@ -8,20 +8,21 @@
       .row
         .col.s12.m11.l12
           .dates.center-align
-
+          
             - @days.each_slice(2) do |days|
               .days-row
                 - days.each do |day|
-                  .day{ class: ("current-day" if current_day?(day)) }
-                    = link_to day_link(day) do
-                      %h2
-                        .left 
-                          = humanized_date(day.date)
-                        .right
-                          = weekday(day.date)
-                        .clearfix
-                      - if day.excerpt?
-                        %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) 
+                  .card{ class: ("current-day" if current_day?(day)) }
+                    .card-content
+                      = link_to day_link(day) do
+                        %h2
+                          .left 
+                            = humanized_date(day.date)
+                          .right
+                            = weekday(day.date)
+                          .clearfix
+                        - if day.excerpt?
+                          %p.excerpt= format_excerpt(day.excerpt, day.excerpt_title) 
 
 - else
   %header

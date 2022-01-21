@@ -3,14 +3,9 @@ class DayEntriesController < ApplicationController
   before_action :set_day_entry
 
   def update
-    @day_entry.update(day_entry_params)
-    # if @day_entry.update(day_entry_params)
-    #   redirect_to day_path(date: @day_entry.day.date.to_date)
-    # else
-    #   #TODO Process exception
-    #   flash[:alert] = "Error: entry wasn't updated."
-    #   redirect_to day_path(date: @day_entry.day.date.to_date)
-    # end
+    unless @day_entry.update(day_entry_params)
+      flash[:alert] = "Error: entry wasn't updated."
+    end
   end
 
   private

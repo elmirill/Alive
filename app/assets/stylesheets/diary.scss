@@ -68,13 +68,19 @@
     margin: 0 -4px;
   }
 
-  .day {
+  .card {
     width: 50%;
-    padding: 0 15px 7px;
     margin: 5px 4px;
     @extend .z-depth-1;
     &.current-day {
       background-color: $current-day-color;
+    }
+  }
+
+  .card-content {
+    padding: 0 15px 7px;
+    p {
+      margin: 10px 0;
     }
   }
  

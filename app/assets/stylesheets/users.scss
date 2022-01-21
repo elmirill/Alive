@@ -1,0 +1,42 @@
+.user-form {
+
+  .card {
+    &.error {
+      @extend .red, .lighten-5;
+    }
+    
+    .card-content {
+      padding: 40px 30px 55px; 
+    }
+    h1 {
+      margin: 0 0 20px;
+    }
+    [type='submit'] {
+      margin: 30px 0 0;
+    }
+  }
+
+}
+
+#signup, #signin {
+  > .row {
+    width: calc(100% + 1.5rem);
+  }
+  .row {
+    margin-bottom: 0;
+  }
+}
+
+#signup {
+
+  .greeting {
+    margin: 30px 0 20px;
+  }
+
+  p {
+    text-align: left;
+    margin: 0 0 15px;
+    font-size: 1.4rem;
+  }
+
+}
