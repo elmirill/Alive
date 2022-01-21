@@ -6,7 +6,8 @@
   %main#diary-index
     .container
       .row
-        .col.s12.m11.l12
+        -# .col.s12.m11.l12
+        .col.s12.m8.offset-m2
           .dates.center-align
           
             - @days.each_slice(2) do |days|

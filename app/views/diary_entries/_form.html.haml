@@ -1,8 +1,5 @@
-- if @diary_entry.errors.any?
-  %ul.errors
-    - @diary_entry.errors.full_messages.each do |message|
-      %li.error-message
-        = message
+-# TODO: implement errors processing
+-# = render "layouts/shared/errors", object: @diary_entry
 
 = form_with model: @diary_entry, local: false do |form|
   .row.input-field

@@ -1,8 +1,6 @@
 .user-form
-  - if @user.errors.any?
-    %ul.errors
-      - @user.errors.full_messages.each do |message|
-        %li= message
+  = render "layouts/shared/errors", object: @user
+
   = form_with model: @user, url: url do |form|
     .row
       .col.s12.l6.input-field

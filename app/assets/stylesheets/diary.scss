@@ -62,14 +62,14 @@
 #diary-index {
 
   .days-row {
-    display: flex;
+    // display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     margin: 0 -4px;
   }
 
   .card {
-    width: 50%;
+    // width: 50%;
     margin: 5px 4px;
     @extend .z-depth-1;
     &.current-day {
