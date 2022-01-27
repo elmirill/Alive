@@ -1,11 +1,11 @@
 #mobile-nav.hide-on-med-and-up.fixed-action-btn
-  %a.btn-floating.btn-large
+  %a#mobile-nav-button.btn-floating.btn-large
     = material_icon.menu.md_24
 
   %ul
     - nav_buttons.each do |nav|
       %li
-        = link_to nav[:url], class: "btn-floating waves-effect waves-light #{nav[:class]} tooltipped", data: { tooltip: "#{nav[:tooltip]}", position: "left" } do
+        = link_to nav[:url], id: nav[:id], class: "btn-floating waves-effect waves-light #{nav[:class]} tooltipped", data: { tooltip: "#{nav[:tooltip]}", position: "left" } do
           - if nav[:image]
             = nav[:image]
           - else

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user?
       flash[:notice] = "Please sign in first"
-      redirect_to about_path
+      redirect_to signup_path
     end
   end
 

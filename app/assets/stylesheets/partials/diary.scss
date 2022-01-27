@@ -70,7 +70,8 @@
 
   .card {
     // width: 50%;
-    margin: 5px 4px;
+    // margin: 5px 4px;
+    margin: 10px 0;
     @extend .z-depth-1;
     &.current-day {
       background-color: $current-day-color;
@@ -78,9 +79,13 @@
   }
 
   .card-content {
-    padding: 0 15px 7px;
+    padding: 15px;
+    h2 {
+      margin: 0 0 2px;
+      line-height: 1;
+    }
     p {
-      margin: 10px 0;
+      margin: 10px 0 0;
     }
   }
  

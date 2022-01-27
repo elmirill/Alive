@@ -20,18 +20,18 @@ module ApplicationHelper
 
   def logged_in_nav_buttons
     [
-      { url: settings_path, class: "blue base hide-on-med-and-up", tooltip: "Settings", image: user_icon(@current_user) },
-      { url: root_path, class: "amber darken-2", tooltip: "Today", icon: "today" },
-      { url: days_path, class: "deep-purple lighten-1", tooltip: "Days list", icon: "view_list" },
-      { url: edit_diary_path, class: "deep-orange lighten-1", tooltip: "Edit diary", icon: "edit" },
-      { url: about_path, class: "light-green darken-1", tooltip: "About", icon: "info" }
+      { url: settings_path, id: "settings-button", class: "blue base hide-on-med-and-up", tooltip: "Settings", image: user_icon(@current_user) },
+      { url: root_path, id: "today-button", class: "amber darken-2", tooltip: "Today", icon: "today" },
+      { url: days_path, id: "days-button", class: "deep-purple lighten-1", tooltip: "Days list", icon: "view_list" },
+      { url: edit_diary_path, id: "edit-diary-button", class: "deep-orange lighten-1", tooltip: "Edit diary", icon: "edit" },
+      { url: about_path, id: "about-button", class: "light-green darken-1", tooltip: "About", icon: "info" }
     ]
   end
 
   def logged_out_nav_buttons
     [
-      { url: signup_path, class: "light-green darken-1", tooltip: "Sign up", icon: "person_add" },
-      { url: signin_path, class: "deep-purple lighten-1", tooltip: "Sign in", icon: "person" }
+      { url: signup_path, id: "signup-button", class: "light-green darken-1", tooltip: "Sign up", icon: "person_add" },
+      { url: signin_path, id: "signin-button", class: "deep-purple lighten-1", tooltip: "Sign in", icon: "person" }
     ]
   end
 
@@ -45,7 +45,7 @@ module ApplicationHelper
 
   def user_icon(user)
     hash = Digest::MD5.hexdigest(user.email)
-    # hash = "dgkldflgk"
+    # hash = "invalid_hash"
     url = "https://www.gravatar.com/avatar/#{hash}?d=404"
     response = Net::HTTP.get_response(URI(url))
     code = response.code.to_i
