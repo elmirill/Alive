@@ -5,7 +5,7 @@ module TestPasswordHelper
     "Password111"
   end
 
-  def default_incorrect_password
+  def default_invalid_password
     "pass"
   end
 

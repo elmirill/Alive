@@ -25,7 +25,8 @@ $terracotta-custom: color("deep-orange", "lighten-1");
 $salad-green-custom: color("light-green", "darken-1");
 $blue-custom: color("blue", "base");
 
-$theme-color: $deep-purple-custom;
+// $theme-color: $deep-purple-custom;
+$theme-color: $salad-green-custom;
 
 $primary-text-color: color("grey", "darken-4") !default;
 $secondary-text-color: color("blue-grey", "base") !default;

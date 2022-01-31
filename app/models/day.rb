@@ -11,7 +11,7 @@ class Day < ApplicationRecord
 
   default_scope { order("date DESC") }
 
-  scope :reverse_ordered, -> { order("date ASC") }
+  scope :reverse_ordered, -> { reorder("date ASC") }
 
   after_create :create_day_entries
 

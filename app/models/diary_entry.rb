@@ -8,11 +8,11 @@ class DiaryEntry < ApplicationRecord
   has_many :day_entries, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :diary }, length: { maximum: 255 }
-  validates :entry_type, presence: true
+  validates :entry_type, presence: true, inclusion: { in: ENTRY_TYPES, message: "%{value} is not a valid entry type" }
 
   default_scope { order("sort_order ASC") }
 
-  scope :reverse_ordered, -> { order("sort_order ASC").reverse }
+  scope :reverse_ordered, -> { reorder("sort_order DESC") }
 
   after_create :create_day_entries, :set_order
 
