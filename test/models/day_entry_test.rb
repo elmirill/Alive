@@ -5,17 +5,11 @@ class DayEntryTest < ActiveSupport::TestCase
   setup do
     @day_entry = build :day_entry
     @day = create :day
-    @diary = create :diary
-    @diary_entries = create_list :diary_entry, 3, diary: @diary
-    @day_entries = []
-    @diary_entries.each do |diary_entry|
-      day_entry = create :day_entry, day: @day, diary_entry: diary_entry
-      @day_entries << day_entry
-    end
+    # diary and diary_entries create automatically when day is created
   end
 
   teardown do
-    @day_entry, @day, @diary, @diary_entries, @day_entries = nil, nil, nil, nil, nil
+    @day_entry, @day = nil, nil, nil
   end
 
   test "should be valid" do

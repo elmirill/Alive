@@ -4,7 +4,7 @@ class CreateDiaryEntries < ActiveRecord::Migration[6.1]
       t.string :title
       t.integer :sort_order
       t.string :entry_type
-      t.boolean :hidden
+      t.boolean :hidden, default: false
       t.belongs_to :diary
 
       t.timestamps

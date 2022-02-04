@@ -5,7 +5,7 @@ class DiaryEntryTest < ActiveSupport::TestCase
   setup do
     @diary_entry = build :diary_entry
     @diary = create :diary
-    @diary_entries = create_list :diary_entry, 3, diary: @diary
+    @diary_entries = @diary.diary_entries
   end
 
   teardown do

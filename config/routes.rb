@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Diary
-  root 'days#show'
+  root 'users#new'
 
   resources :days, only: [:index, :create]
   get ':date', to: 'days#show', as: :day, date: /(\d|-){8,10}/
+  get 'today', to: 'days#show', as: :today
 
   resources :diary_entries, except: [:show, :new]
   get 'edit-diary', to: 'diary_entries#index', as: :edit_diary

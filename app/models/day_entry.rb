@@ -10,6 +10,7 @@ class DayEntry < ApplicationRecord
 
   delegate :diary, to: :diary_entry
   delegate :entry_type, to: :diary_entry
+  delegate :sort_order, to: :diary_entry
 
   has_rich_text :rich_text
 

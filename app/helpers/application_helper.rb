@@ -21,7 +21,7 @@ module ApplicationHelper
   def logged_in_nav_buttons
     [
       { url: settings_path, id: "settings-button", class: "blue base hide-on-med-and-up", tooltip: "Settings", image: user_icon(@current_user) },
-      { url: root_path, id: "today-button", class: "amber darken-2", tooltip: "Today", icon: "today" },
+      { url: today_path, id: "today-button", class: "amber darken-2", tooltip: "Today", icon: "today" },
       { url: days_path, id: "days-button", class: "deep-purple lighten-1", tooltip: "Days list", icon: "view_list" },
       { url: edit_diary_path, id: "edit-diary-button", class: "deep-orange lighten-1", tooltip: "Edit diary", icon: "edit" },
       { url: about_path, id: "about-button", class: "light-green darken-1", tooltip: "About", icon: "info" }

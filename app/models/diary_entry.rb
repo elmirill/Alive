@@ -2,7 +2,7 @@ class DiaryEntry < ApplicationRecord
 
   # title, sort_order, entry_type
 
-  ENTRY_TYPES = ["EntryText", "EntryCheck", "EntryLine"]
+  ENTRY_TYPES = %w(EntryText EntryCheck EntryLine)
 
   belongs_to :diary
   has_many :day_entries, dependent: :destroy

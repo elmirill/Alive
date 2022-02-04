@@ -11,6 +11,7 @@ class ActiveSupport::TestCase
   class ActiveSupport::TestCase
     include TestSigninHelper
     include TestPasswordHelper
+    include ApplicationHelper
     include FactoryBot::Syntax::Methods
   end
 

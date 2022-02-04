@@ -13,7 +13,7 @@
             - @days.each_slice(2) do |days|
               .days-row
                 - days.each do |day|
-                  .card{ class: ("current-day" if current_day?(day)) }
+                  .card.day{ class: ("current-day" if current_day?(day)) }
                     .card-content
                       = link_to day_link(day) do
                         %h2
