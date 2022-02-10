@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
     # Auth
     get 'signin', to: 'devise/sessions#new', as: :signin
-    # post 'signin', to: 'devise/sessions#create'
     delete 'signout', to: 'devise/sessions#destroy', as: :signout
   end
 

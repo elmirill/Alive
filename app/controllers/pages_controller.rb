@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  # skip_before_action :require_user, only: [:about]
+  skip_before_action :authenticate_user!, only: [:about, :check_email]
 
   def about
   end

@@ -1,5 +1,4 @@
 .user-card
-  -# = render "layouts/shared/errors", object: @user
   = render "devise/shared/error_messages", resource: @user
 
   = form_with model: @user, url: url do |form|
