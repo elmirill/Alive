@@ -1,9 +1,29 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
+  devise_scope :user do
+    unauthenticated do
+      root 'users/registrations#new'
+    end
+
+    authenticated :user do
+      root 'days#show', as: :auth_root
+    end
+
+    # Users
+    get 'signup', to: 'users/registrations#new', as: :signup
+    post 'signup', to: 'users/registrations#create'
+    get 'edit-user', to: redirect('/settings')
+    patch 'edit-user', to: 'users/registrations#update'
+    delete 'delete-account', to: 'users/registrations#destroy', as: :delete_account
+
+    # Auth
+    get 'signin', to: 'devise/sessions#new', as: :signin
+    # post 'signin', to: 'devise/sessions#create'
+    delete 'signout', to: 'devise/sessions#destroy', as: :signout
+  end
 
   # Diary
-  root 'users#new'
-
   resources :days, only: [:index, :create]
   get ':date', to: 'days#show', as: :day, date: /(\d|-){8,10}/
   get 'today', to: 'days#show', as: :today
@@ -12,21 +32,10 @@ Rails.application.routes.draw do
   get 'edit-diary', to: 'diary_entries#index', as: :edit_diary
 
   resources :day_entries, only: [:update]
-  
-  # Users
-  get 'signup', to: 'users#new', as: :signup
-  post 'signup', to: 'users#create'
-  get 'edit-user', to: redirect('/settings')
-  patch 'edit-user', to: 'users#update'
-  delete 'delete-account', to: 'users#destroy', as: :delete_account
-
-  # Auth
-  get 'signin', to: 'sessions#new', as: :signin
-  post 'signin', to: 'sessions#create'
-  delete 'signout', to: 'sessions#destroy', as: :signout
 
   # Pages
   get 'about', to: 'pages#about', as: :about
   get 'settings', to: 'pages#settings', as: :settings
+  get 'check-email', to: 'pages#check_email', as: :check_email
 
 end

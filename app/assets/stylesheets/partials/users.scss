@@ -1,4 +1,11 @@
-.user-form {
+.user-card {
+  > .row {
+    width: calc(100% + 1.5rem);
+  }
+  .row {
+    margin-bottom: 0;
+  }
+
   .card {    
     .card-content {
       padding: 40px 30px 55px; 
@@ -10,16 +17,6 @@
       margin: 30px 0 0;
     }
   }
-
-}
-
-#signup, #signin {
-  > .row {
-    width: calc(100% + 1.5rem);
-  }
-  .row {
-    margin-bottom: 0;
-  }
 }
 
 #signup {
@@ -30,5 +27,44 @@
     text-align: left;
     margin: 0 0 15px;
     font-size: 1.4rem;
+  }
+}
+
+.devise-links {
+  float: right;
+  margin: 4px 0 0;
+  a {
+    display: block;
+    text-align: right;
+  }
+}
+
+#check-email {
+  .card {    
+    h1 {
+      margin: 0;
+    }
+  }
+  .material-icons {
+    margin: 30px 0;
+    font-size: 5rem;
+    color: $deep-purple-custom;
+  }
+}
+
+#resend-confirmation, #forgot-password {
+  .card {    
+    h1 {
+      margin: 0 0 30px;
+    }
+  }
+}
+
+
+@media (max-width: 991px) {
+  .user-card {
+    .row {
+      margin-bottom: 0;
+    }
   }
 }

@@ -1,12 +1,12 @@
 require "application_system_test_case"
 
-class UsersTest < ApplicationSystemTestCase
+class SigningTest < ApplicationSystemTestCase
 
   test "viewing the index signed out" do
     visit root_url
   
     assert_selector "h1", text: "Hello,"
-    assert_selector ".user-form"
+    assert_selector ".user-card"
     assert_selector "a#signup-button"
     assert_selector "a#signin-button"
   end
@@ -14,14 +14,16 @@ class UsersTest < ApplicationSystemTestCase
   test "clicking sign in button shows sign in form" do
     visit root_url
 
+    # Using id because there's no text on the button
     find('#signin-button').click
 
-    assert_selector "h1", text: "Welcome back!"
+    assert_selector "h1", text: "Hello"
   end
 
   test "clicking sign up button shows sign up page" do
     visit signin_url
 
+    # Using id because there's no text on the button
     find('#signup-button').click
 
     assert_selector "h1", text: "Hello,"
@@ -38,7 +40,26 @@ class UsersTest < ApplicationSystemTestCase
 
     click_on "Let's go!"
 
-    assert_selector "span", text: "Edit Diary"
+    assert_selector "span.nav-title", text: "Edit Diary"
+  end
+
+  test "successfully signs in" do
+    visit signin_url
+    user = create :user
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+
+    click_on "Get me in!"
+
+    assert_selector "span.nav-title", text: humanized_date(DateTime.current)
+  end
+
+  test "successfully sings out" do
+    # signin(create :user)
+    # visit settings_path
+    
+    # click_on "Sign out"
   end
 
 end

@@ -1,0 +1,17 @@
+%main#forgot-password.user-card.valign-wrapper
+  .row
+    .col.s12.m8.offset-m2.l6.offset-l3
+      .card
+        .card-content.center
+
+          %h1 Forgot your password?
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |form|
+            -# = render "devise/shared/error_messages", resource: resource
+
+            .input-field
+              = form.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email"
+
+            .buttons
+              %button.btn.btn-large.waves-effect.waves-light{ type: "submit" }
+                Send reset password instructions
+          -# = render "devise/shared/links"

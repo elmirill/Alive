@@ -6,7 +6,7 @@ class MobileUsersTest < MobileSystemTestCase
     visit root_url
   
     assert_selector "h1", text: "Hello,"
-    assert_selector ".user-form"
+    assert_selector ".user-card"
     assert_selector "a#mobile-nav-button"
 
     find('#mobile-nav-button').click
@@ -21,7 +21,7 @@ class MobileUsersTest < MobileSystemTestCase
     find('#mobile-nav-button').click
     find('#signin-button').click
 
-    assert_selector "h1", text: "Welcome back!"
+    assert_selector "h1", text: "Hello"
   end
 
   test "clicking sign up button shows sign up page" do

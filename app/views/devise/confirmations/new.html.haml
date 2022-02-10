@@ -1,0 +1,17 @@
+%main#resend-confirmation.user-card.valign-wrapper
+  .row
+    .col.s12.m8.offset-m2.l6.offset-l3
+      .card
+        .card-content.center
+
+          %h1 Resend confirmation instructions
+          = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |form|
+            = render "devise/shared/error_messages", resource: resource
+
+            .input-field
+              = form.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+
+            .buttons
+              %button.resend-confirmation.btn.btn-large.waves-effect.waves-light{ type: "submit" }
+                Resend
+          

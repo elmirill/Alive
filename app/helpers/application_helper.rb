@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def nav_buttons
-    if current_user?
+    if user_signed_in?
       logged_in_nav_buttons
     else
       logged_out_nav_buttons
@@ -58,6 +58,19 @@ module ApplicationHelper
 
   def classify(entry)
     entry.underscore.dasherize
+  end
+
+  # Devise helpers
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 
 end

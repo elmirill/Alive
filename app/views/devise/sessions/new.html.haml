@@ -1,0 +1,24 @@
+%main#signin.user-card.valign-wrapper
+  .row
+    .col.s12.m8.offset-m2.l6.offset-l3
+      .card
+        .card-content.center
+
+          %h1 Hello
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
+
+            .input-field
+              = form.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email"
+            .input-field
+              = form.password_field :password, placeholder: "Password", autocomplete: "current-password"
+            - if devise_mapping.rememberable?
+              .input-field.remember-me
+                %label
+                  = form.check_box :remember_me, checked: true, class: "filled-in"
+                  %span.label Remember me
+                  
+            .buttons
+              = render "devise/shared/links"
+              .clearfix
+              %button.btn.btn-large.waves-effect.waves-light{ type: "submit" }
+                Get me in!

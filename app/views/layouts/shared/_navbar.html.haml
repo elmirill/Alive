@@ -1,7 +1,7 @@
 .navbar-fixed
   %nav{ id: block_id }
     .nav-wrapper
-      - if current_user?
+      - if user_signed_in?
         = link_to settings_path, id: "settings-button", class: "btn-large btn-floating halfway-fab tooltipped hide-on-small-only blue base", data: { tooltip: "Settings", position: "left" } do
           = user_icon(@current_user)
       .container

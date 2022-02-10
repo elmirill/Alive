@@ -1,0 +1,19 @@
+%main#forgot-password.user-card.valign-wrapper
+  .row
+    .col.s12.m8.offset-m2.l6.offset-l3
+      .card
+        .card-content.center
+
+          %h1 Change your password
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |form|
+            = render "devise/shared/error_messages", resource: resource
+            = form.hidden_field :reset_password_token
+            .input-field
+              = form.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "tooltipped", data: { tooltip: "Password must contain 8+ characters,<br>a digit, a lower and an upper case character", html: "true" }
+            -# .field
+              = f.label :password_confirmation, "Confirm new password"
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "new-password"
+            .buttons
+              %button.update.btn.btn-large.waves-effect.waves-light{ type: "submit" }
+                Change password

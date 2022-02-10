@@ -30,7 +30,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "should see the signin page" do
     get signin_url
     assert_response :success
-    assert_select "h1", "Welcome back!"
+    assert_select "h1", "Hello"
     assert_select "button", "Get me in!"
   end
 
