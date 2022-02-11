@@ -17,6 +17,7 @@ class DiaryEntriesController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -37,7 +38,9 @@ class DiaryEntriesController < ApplicationController
   private
 
   def set_diary_entry
-    @diary_entry = DiaryEntry.find(params[:id])
+    @diary_entry = @diary.diary_entries.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to edit_diary_path
   end
 
   def diary_entry_params

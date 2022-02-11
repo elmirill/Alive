@@ -13,6 +13,7 @@ class ActiveSupport::TestCase
     include TestPasswordHelper
     include ApplicationHelper
     include FactoryBot::Syntax::Methods
+    include Devise::Test::IntegrationHelpers
   end
 
   # Add helpers to FactoryBot

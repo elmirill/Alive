@@ -1,7 +1,7 @@
 .user-card
-  = render "devise/shared/error_messages", resource: @user
+  = render "devise/shared/error_messages", resource: resource
 
-  = form_with model: @user, url: url do |form|
+  = form_with model: resource, url: url do |form|
     .row
       .col.s12.l6.input-field
         = form.text_field :first_name, placeholder: "First Name", autofocus: true
@@ -12,7 +12,7 @@
         = form.email_field :email, placeholder: "Email", autocomplete: "email"
       .col.s12.l6.input-field
         = form.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "tooltipped", data: { tooltip: "Password must contain 8+ characters,<br>a digit, a lower and an upper case character", html: "true" }
-    - unless @user.new_record?
+    - unless resource.new_record?
       .row
         .col.s12.l6.input-field.right
           = form.password_field :current_password, placeholder: "Current password to confirm changes", autocomplete: "current-password", class: "tooltipped", data: { tooltip: "Current password to confirm changes" }
@@ -25,4 +25,4 @@
           Sign out
 
       %button.update.btn.btn-large.waves-effect.waves-light{ type: "submit" }
-        #{ @user.new_record? ? "Let's go!" : "Update" }
+        #{ resource.new_record? ? "Let's go!" : "Update" }

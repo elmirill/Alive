@@ -5,7 +5,6 @@ class DayEntryTest < ActiveSupport::TestCase
   setup do
     @day_entry = build :day_entry
     @day = create :day
-    # diary and diary_entries create automatically when day is created
   end
 
   teardown do
@@ -32,14 +31,14 @@ class DayEntryTest < ActiveSupport::TestCase
   end
 
   test "should be ordered by sort_order ASC" do
-    day_entries = DayEntry.all
+    day_entries = @day.day_entries
     assert_equal 1, day_entries.first.diary_entry.sort_order
     assert_equal 2, day_entries.second.diary_entry.sort_order
     assert_equal 3, day_entries.third.diary_entry.sort_order
   end
 
   test "reverse _ordered scope should reorder by sort_order DESC" do
-    day_entries = DayEntry.reverse_ordered
+    day_entries = @day.day_entries.reverse_ordered
     assert_equal 3, day_entries.first.diary_entry.sort_order
     assert_equal 2, day_entries.second.diary_entry.sort_order
     assert_equal 1, day_entries.third.diary_entry.sort_order

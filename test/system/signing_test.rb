@@ -56,7 +56,7 @@ class SigningTest < ApplicationSystemTestCase
   end
 
   test "successfully sings out" do
-    # signin(create :user)
+    # sign_in(create :user)
     # visit settings_path
     
     # click_on "Sign out"

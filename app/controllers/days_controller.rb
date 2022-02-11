@@ -15,7 +15,7 @@ class DaysController < ApplicationController
 
   def set_day
     date = params[:date].present? ? params[:date] : @today_date
-    @day = Day.where(diary_id: @diary.id, date: date).take
+    @day = @diary.days.where(date: date).take
   end
 
   def set_days

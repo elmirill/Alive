@@ -3,14 +3,14 @@ require "test_helper"
 class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
 
   setup do
-    @user = create :user
+    @user = create :confirmed_user
     @diary = create :diary, user: @user
     @diary_entry = @diary.diary_entries.sample
-    signin(@user)
+    sign_in(@user)
   end
 
   teardown do
-    signout
+    sign_out_user
     @user, @diary, @diary_entry = nil, nil, nil
   end
 
@@ -59,7 +59,7 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user should be redirected to signin page when GETting restricted resources if signed out" do
-    signout
+    sign_out_user
     URLS = [
       edit_diary_url,
       edit_diary_entry_url(@diary_entry)]
@@ -73,7 +73,7 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user should be redirected to signin page when trying to create diary_entry signed out" do
-    signout
+    sign_out_user
     post diary_entries_url, params: { diary_entry: {
       title: "Title",
       entry_type: DiaryEntry::ENTRY_TYPES.sample } }
@@ -84,7 +84,7 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user should be redirected to signin page when trying to update diary_entry signed out" do
-    signout
+    sign_out_user
     patch diary_entry_url(@diary_entry), params: { diary_entry: {
       title: "Title",
       entry_type: DiaryEntry::ENTRY_TYPES.sample } }
@@ -95,12 +95,22 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user should be redirected to signin page when trying to delete diary_entry signed out" do
-    signout
+    sign_out_user
     delete diary_entry_url(@diary_entry)
 
     assert_redirected_to signin_url
     follow_redirect!
     assert_response :success
+  end
+
+  # TODO: test actual redirection
+  test "user should be redirected to edit_diary_url if diary_entry not found" do
+    assert_raises(ActiveRecord::RecordNotFound) do
+      get edit_diary_entry_url(DiaryEntry.find(9999999999999999))
+    end
+    # assert_redirected_to edit_diary_url
+    # follow_redirect!
+    # assert_response :success
   end
 
 end

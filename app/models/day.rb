@@ -32,8 +32,7 @@ class Day < ApplicationRecord
   private
 
   def create_day_entries
-    diary_entries = self.diary_entries
-    diary_entries.each do |entry|
+    self.diary_entries.each do |entry|
       self.day_entries.create!(diary_entry: entry)
     end
   end

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def settings
-    @user = current_user
+    @resource = current_user
   end
 
   def check_email

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
+
+  devise_for :users, controllers: { registrations: "users/registrations" }, path: "", path_names: { sign_in: "signin", signup: "signup", sign_out: "signout" }
 
   devise_scope :user do
     unauthenticated do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
 
     # Auth
     get 'signin', to: 'devise/sessions#new', as: :signin
+    post 'signin', to: 'devise/sessions#create'
     delete 'signout', to: 'devise/sessions#destroy', as: :signout
   end
 
