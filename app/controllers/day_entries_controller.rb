@@ -11,8 +11,9 @@ class DayEntriesController < ApplicationController
   private
 
   def set_day_entry
-    # TODO: fetch within user scope
-    @day_entry = DayEntry.find(params[:id])
+    @day_entry = DayEntry.joins(:diary_entry)
+                         .where("diary_entries.diary_id = ?", @diary.id)
+                         .find(params[:id])
   end
 
   def day_entry_params
