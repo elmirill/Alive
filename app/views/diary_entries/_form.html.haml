@@ -1,32 +1,32 @@
 -# TODO: implement errors processing
--# = render "layouts/shared/errors", object: @diary_entry
+= render "layouts/shared/errors", object: @diary_entry
 
-= form_with model: @diary_entry, local: false do |form|
+= form_with model: @diary_entry, local: true do |form|
   .row.input-field
     .col.title-field
       = form.text_field :title, placeholder: "Title"
     .col.actions
 
       .type-radio.radio-icons.left
-        %label.tooltipped{ data: { tooltip: "Rich text area", position: "bottom" } }
+        %label.tooltipped{ id: "entry-text-button", data: { tooltip: "Rich text area", position: "bottom" } }
           = form.radio_button :entry_type, "EntryText"
           %span{ class: toggled_class(@diary_entry, "EntryText") }
             = material_icon.insert_chart.r90
-        %label.tooltipped{ data: { tooltip: "Check box", position: "bottom" } }
+        %label.tooltipped{ id: "entry-check-button", data: { tooltip: "Check box", position: "bottom" } }
           = form.radio_button :entry_type, "EntryCheck"
           %span{ class: toggled_class(@diary_entry, "EntryCheck") }
             = material_icon.check_box
-        %label.tooltipped{ data: { tooltip: "Short text box", position: "bottom" } }
+        %label.tooltipped{ id: "entry-line-button", data: { tooltip: "Short text box", position: "bottom" } }
           = form.radio_button :entry_type, "EntryLine"
           %span{ class: toggled_class(@diary_entry, "EntryLine") }
             = material_icon.font_download.css_class("normalize")
 
       .submit.right
         - if @diary_entry.new_record?
-          %button.btn.waves-effect.waves-light.tooltipped{ type: "submit", data: { tooltip: "Add entry", position: "bottom" } }
+          %button.btn.waves-effect.waves-light.tooltipped{ id: "add-entry-button",  type: "submit", data: { tooltip: "Add entry", position: "bottom" } }
             = material_icon.add
         - else
-          %button.btn.waves-effect.waves-light.tooltipped{ type: "submit", data: { tooltip: "Save entry", position: "bottom" } }
+          %button.btn.waves-effect.waves-light.tooltipped{ id: "save-entry-button", type: "submit", data: { tooltip: "Save entry", position: "bottom" } }
             = material_icon.save
 
   - unless @diary_entry.new_record?

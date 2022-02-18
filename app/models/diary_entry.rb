@@ -13,6 +13,7 @@ class DiaryEntry < ApplicationRecord
   default_scope { order("sort_order ASC") }
 
   scope :reverse_ordered, -> { reorder("sort_order DESC") }
+  scope :persisted, -> { where("id IS NOT NULL") }
 
   after_create :create_day_entries, :set_order
 

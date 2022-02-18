@@ -17,7 +17,6 @@ class DiaryEntriesController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update

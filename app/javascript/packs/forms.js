@@ -12,4 +12,5 @@ checkFields.forEach(field => field.addEventListener("change", sendForm))
 // TODO: optimize with local storage and input change
 const textFields = document.querySelectorAll(".day-entry .trix-content, .day-entry [type='text']")
 textFields.forEach(field => field.addEventListener("keyup", sendForm))
+textFields.forEach(field => field.addEventListener("blur", sendForm))
 

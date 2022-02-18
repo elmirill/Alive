@@ -58,6 +58,25 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
     # TODO
   end
 
+  test "user should not be able to create diary entry with existing name" do
+    existing_diary_entry_title = @diary_entry.title
+
+    post diary_entries_url, params: { diary_entry: {
+      title: existing_diary_entry_title,
+      entry_type: DiaryEntry::ENTRY_TYPES.sample 
+    } }
+
+    assert_select ".errors li", "Title has already been taken"
+  end
+
+  test "user should not be able to create diary entry without entry_type" do
+    post diary_entries_url, params: { diary_entry: {
+      title: Faker::Lorem.sentence(word_count: 3)
+    } }
+
+    assert_select ".errors li", "Entry type can't be blank"
+  end
+
   test "user should be redirected to signin page when GETting restricted resources if signed out" do
     sign_out_user
     URLS = [
@@ -108,9 +127,6 @@ class EditDiaryFlowsTest < ActionDispatch::IntegrationTest
     assert_raises(ActiveRecord::RecordNotFound) do
       get edit_diary_entry_url(DiaryEntry.find(9999999999999999))
     end
-    # assert_redirected_to edit_diary_url
-    # follow_redirect!
-    # assert_response :success
   end
 
 end

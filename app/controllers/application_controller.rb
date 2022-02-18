@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def set_up_diary_and_dates
     @diary = current_user.diary || current_user.create_diary
     @diary_created = @diary.created_at.to_date
-    @diary_entries = @diary.diary_entries
+    @diary_entries = @diary.diary_entries.persisted
     @today_date = DateTime.current.to_date
   end
 

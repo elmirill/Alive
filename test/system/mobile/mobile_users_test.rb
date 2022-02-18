@@ -2,6 +2,16 @@ require "mobile_system_test_case"
 
 class MobileUsersTest < MobileSystemTestCase
 
+  setup do
+    # Extra viewport size override for mobile tests to fix Capybara bug
+    Capybara.current_session.current_window.resize_to(375, 667)
+  end
+
+  teardown do
+    # Extra viewport size override for mobile tests to fix Capybara bug
+    Capybara.current_session.current_window.resize_to(1400, 1400)
+  end
+
   test "viewing the index signed out" do
     visit root_url
   

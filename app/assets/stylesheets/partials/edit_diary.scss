@@ -138,6 +138,9 @@
 
   .entry-form {
     padding: 1rem 0 0 3rem;
+    input[type=text] {
+      font-size: 1.4rem;
+    }
   }
 
   @media (max-width: 599px) {

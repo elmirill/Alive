@@ -2,11 +2,11 @@ require "bcrypt"
 
 module TestPasswordHelper
   def default_password
-    "Password111"
+    "Password222"
   end
 
   def default_new_password
-    "Password222"
+    "Password111"
   end
 
   def default_invalid_password

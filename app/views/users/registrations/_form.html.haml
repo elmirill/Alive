@@ -19,7 +19,7 @@
 
     .buttons
       - if user_signed_in?
-        = link_to delete_account_path, method: :delete, class: "delete-account btn btn-flat btn-large waves-effect waves-light", data: { confirm: "This will permanently delete ALL your data. This action cannot be undone. Are you sure?" } do
+        = link_to delete_account_path, method: :delete, class: "delete-account btn btn-flat btn-large waves-effect waves-light", data: { confirm: "This will IRREVERSIBLY delete ALL your data. This action cannot be undone. Are you sure?" } do
           Delete account
         = link_to signout_path, method: :delete, class: "signout btn btn-flat btn-large waves-effect waves-light" do
           Sign out

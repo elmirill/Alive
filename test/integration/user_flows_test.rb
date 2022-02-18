@@ -74,8 +74,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to settings_url
     follow_redirect!
     assert_response :success
-    assert_select "input#user_first_name[value=?]", "#{ @new_user.first_name }"
-    assert_select "input#user_last_name[value=?]", "#{ @new_user.last_name }"
+    assert_select "input#user_first_name[value=?]", @new_user.first_name
+    assert_select "input#user_last_name[value=?]", @new_user.last_name
   end
 
   test "should be able to update email" do
@@ -96,7 +96,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "shoud be able to delete account" do
     sign_in(@existing_user)
-    delete delete_account_url
+    assert_difference "User.count", -1 do
+      delete delete_account_url
+    end
     assert_redirected_to signin_url
     follow_redirect!
     assert_response :success
